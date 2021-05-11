@@ -3,9 +3,9 @@ const router = express.Router()
 
 const users = require('../controller/user.controller')
 
-//---------------- Rutas para /v1/... -------------------------
+//---------------- Rutas para /api/... -------------------------
 router.get('/', (req, res)=>{
-    res.json(showResults(true,'Bienvenid@ a Silver Robot'));
+    res.json({'data':'Bienvenid@ a Silver Robot'});
 })
 
 /**

@@ -32,7 +32,7 @@ app.listen(port, ()=>{
     console.info(`El server está funcionando en http://localhost:${port}`);
 })
 
-app.use('/v1', routes)
+app.use('/api', routes)
 //app.use('/docs', express.static(path.join(__dirname, 'public'))) // mostrar documentación
 
 module.exports= app;

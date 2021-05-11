@@ -1,20 +1,20 @@
-const sql = require('./db')
+const mysql = require('./db')
 
-const User = (user) =>{
-    this.name = user.name;
-    this.surname = user.surname;
-    this.username = user.username;
-    this.pass = user.pass;
-    this.currency = user.currency;
+//estructura del user
+const User = function(user){
+    this.name_u = user.name;
+    this.surname_u = user.surname;
+    this.username_u = user.username;
+    this.pass_u = user.pass;
+    this.currency_u = user.currency;
 }
 
-// constructor
+//para crear usuario
 User.create = (newUser, result)=>{
-    sql.query("INSERT INTO user SET ?", newUser, (err, res)=>{
+    mysql.query("INSERT INTO users SET ?", newUser, (err, res)=>{
         if (err){
-            //console.log("error al crear", err);
-            result('error al crear usuario', null);
-            return
+            result('error al crear usuario', err);
+            return;
         }
 
         result(null, {id: res.insertId, ...newUser})
