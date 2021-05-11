@@ -21,5 +21,13 @@ User.create = (newUser, result)=>{
     })
 }
 
+//usuario existente
+User.exist = (username)=>{
+    mysql.query("SELECT COUNT(*) AS count FROM users WHERE username_u=?",[username], (err, res, fields)=>{
+        console.log(res[0].count)
+        return(res[0].count > 0)
+    })
+}
+
 
 module.exports = User;

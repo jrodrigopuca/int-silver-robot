@@ -17,17 +17,27 @@ exports.create = (req, res)=>{
         return; 
     }
 
-    const user = new User({
-        username : req.body.username,
-        name : req.body.name,
-        surname : req.body.surname,
-        pass : req.body.pass,
-        currency : req.body.currency
-    })
+    if (User.exist(req.body.username)){
+        console.log('existente')
+        res.status(400).send({'result': 'error', 'data': 'Usuario existente'});
+        return; 
+    }else{
+        console.log('no existente')
+        const user = new User({
+            username : req.body.username,
+            name : req.body.name,
+            surname : req.body.surname,
+            pass : req.body.pass,
+            currency : req.body.currency
+        })
+    
+    
+        User.create(user, (err, data)=>{
+            if (err)    res.status(500).send({ 'result': 'error', 'data': data});
+            else        res.send({'result': 'ok', 'data':data})
+        })
+    }
 
-    User.create(user, (err, data)=>{
-        if (err)    res.status(500).send({ 'result': 'error', 'data': data});
-        else        res.send({'result': 'ok', 'data':data})
-    })
 
 }
+
