@@ -1,4 +1,4 @@
-const sql = require('db')
+const sql = require('./db')
 
 const User = (user) =>{
     this.name = user.name;
@@ -12,12 +12,12 @@ const User = (user) =>{
 User.create = (newUser, result)=>{
     sql.query("INSERT INTO user SET ?", newUser, (err, res)=>{
         if (err){
-            console.log("error al crear", err);
-            result(err, null);
+            //console.log("error al crear", err);
+            result('error al crear usuario', null);
             return
         }
 
-        return (null, {id: res.insertId, ...newUser})
+        result(null, {id: res.insertId, ...newUser})
     })
 }
 

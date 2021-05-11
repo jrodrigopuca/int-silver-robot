@@ -9,16 +9,17 @@ exports.create = (req, res)=>{
     }
 
     const user = new User({
-        name = req.body.name,
-        surname = ureq.bodysurname,
-        username = req.body.username,
-        pass = req.body.pass,
-        currency = req.body.currency
+        name : req.body.name,
+        surname : req.body.surname,
+        username : req.body.username,
+        pass : req.body.pass,
+        currency : req.body.currency
     })
 
     User.create(user, (err, data)=>{
-        if (err)    res.status(500).send({ result: 'error', message: "Error al crear usuario"});
-        else        res.send({result: 'ok', data:data})
+        if (err)    res.status(500).send({ 'result': error, 'data': err});
+        else        res.send({'result': 'ok', 'data':data})
+        
     })
 
 }

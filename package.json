@@ -5,6 +5,11 @@
   "repository": "https://github.com/jrodrigopuca/silver-robot.git",
   "author": "jarp <r@geeks.ms>",
   "license": "MIT",
+  "private":"false",
+  "scripts": {
+    "dev":"nodemon src/app.js",
+    "test":"mocha test/test.js"
+  },
   "dependencies": {
     "dotenv": "^9.0.1",
     "express": "^4.17.1",
